@@ -6,18 +6,23 @@ export default function Home() {
   const [babyName, setBabyName] = useState("");
 
   // Hent navnet fra localStorage når appen loader
-  useEffect(() => {
-    const storedName = localStorage.getItem("babyName");
-    if (storedName) {
-      setBabyName(storedName);
-    }
-  }, []);
+useEffect(() => {
+  const storedName = localStorage.getItem("babyName");
+  const storedDob = localStorage.getItem("babyDob");
+  if (storedName) setBabyName(storedName);
+  if (storedDob) setBabyDob(storedDob);
+}, []);
 
   // Gem navnet i localStorage når det ændres
-  const handleNameSubmit = (name: string) => {
-    setBabyName(name);
-    localStorage.setItem("babyName", name);
-  };
+const [babyDob, setBabyDob] = useState("");
+
+const handleNameSubmit = (name: string, dob: string) => {
+  setBabyName(name);
+  setBabyDob(dob);
+  localStorage.setItem("babyName", name);
+  localStorage.setItem("babyDob", dob);
+};
+
 
   return (
     <div style={{ padding: "2rem", fontFamily: "Arial" }}>
