@@ -1,24 +1,43 @@
-// components/BabyForm.tsx
 import { useState } from "react";
 
-export default function BabyForm({ onSubmit }: { onSubmit: (babyName: string) => void }) {
+type Props = {
+  onSubmit: (name: string, dob: string) => void;
+};
+
+export default function BabyForm({ onSubmit }: Props) {
   const [name, setName] = useState("");
+  const [dob, setDob] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSubmit(name, dob);
+  };
 
   return (
-    <form onSubmit={(e) => {
-      e.preventDefault();
-      if (name) onSubmit(name);
-    }}>
+    <form onSubmit={handleSubmit} style={{ marginTop: "1rem" }}>
       <label>
-        Babyens navn:
+        Navn:{" "}
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          style={{ marginLeft: "1rem" }}
+          required
         />
       </label>
-      <button type="submit" style={{ marginLeft: "1rem" }}>Gem</button>
+      <br />
+      <label>
+        Fødselsdato:{" "}
+        <input
+          type="date"
+          value={dob}
+          onChange={(e) => setDob(e.target.value)}
+          required
+        />
+      </label>
+      <br />
+      <button type="submit" style={{ marginTop: "1rem" }}>
+        Gem
+      </button>
     </form>
   );
 }
