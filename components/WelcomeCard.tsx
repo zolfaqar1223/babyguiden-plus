@@ -9,11 +9,13 @@ export default function WelcomeCard({ name, dob, weeksOld }: Props) {
     if (weeksOld === null) return null;
 
     if (weeksOld < 4) {
-      return <p>👶 Dit barn er nyfødt – husk masser af hudkontakt.</p>;
+      return <p>🍼 Dit barn er nyfødt – husk masser af hudkontakt og ro.</p>;
     } else if (weeksOld < 12) {
-      return <p>😊 Din baby er i gang med at lære at smile og holde hovedet selv.</p>;
+      return <p>😊 Din baby er begyndt at smile og løfte hovedet – nyd samværet.</p>;
+    } else if (weeksOld < 24) {
+      return <p>🧠 Nu begynder din baby at udforske! Giv plads til leg og bevægelse.</p>;
     } else {
-      return <p>🎉 Din baby er nu over 3 måneder – tid til motoriske lege!</p>;
+      return <p>🎉 Din baby vokser hurtigt – måske er det tid til grød og tumlelege?</p>;
     }
   };
 
