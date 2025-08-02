@@ -23,15 +23,24 @@ const handleNameSubmit = (name: string, dob: string) => {
   localStorage.setItem("babyDob", dob);
 };
 
-
-  return (
-    <div style={{ padding: "2rem", fontFamily: "Arial" }}>
-      <h1>BabyGuiden+ Webapp 👶</h1>
-      {babyName ? (
-<WelcomeCard name={babyName} dob={babyDob} />
-      ) : (
-        <BabyForm onSubmit={handleNameSubmit} />
-      )}
-    </div>
-  );
+function calculateWeeksOld(dob: string): number {
+  const birthDate = new Date(dob);
+  const now = new Date();
+  const diffInMs = now.getTime() - birthDate.getTime();
+  const weeks = Math.floor(diffInMs / (1000 * 60 * 60 * 24 * 7));
+  return weeks;
 }
+
+const weeksOld = babyDob ? calculateWeeksOld(babyDob) : null;
+
+return (
+  <div style={{ padding: "2rem", fontFamily: "Arial" }}>
+    <h1>BabyGuiden+ Webapp 👶</h1>
+    {babyName ? (
+      <WelcomeCard name={babyName} dob={babyDob} weeksOld={weeksOld} />
+    ) : (
+      <BabyForm onSubmit={handleNameSubmit} />
+    )}
+  </div>
+);
+
