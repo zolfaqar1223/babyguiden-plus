@@ -1,0 +1,8 @@
+export default function Home() {
+  return (
+    <div style={{ padding: "2rem", fontFamily: "Arial" }}>
+      <h1>BabyGuiden+ Webapp 🚼</h1>
+      <p>Velkommen! Din app kører nu live.</p>
+    </div>
+  );
+}
