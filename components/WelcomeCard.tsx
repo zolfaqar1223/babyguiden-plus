@@ -6,16 +6,16 @@ type Props = {
 
 export default function WelcomeCard({ name, dob, weeksOld }: Props) {
   const renderContent = () => {
-    if (weeksOld === null) return null;
+    if (weeksOld === null) return <p>Indtast din babys fødselsdato for at se vejledning</p>;
 
     if (weeksOld < 4) {
       return <p>🍼 Dit barn er nyfødt – husk masser af hudkontakt og ro.</p>;
     } else if (weeksOld < 12) {
-      return <p>😊 Din baby er begyndt at smile og løfte hovedet – nyd samværet.</p>;
+      return <p>😊 Din baby er i gang med at lære at smile og holde hovedet – støt op!</p>;
     } else if (weeksOld < 24) {
-      return <p>🧠 Nu begynder din baby at udforske! Giv plads til leg og bevægelse.</p>;
+      return <p>🧸 Babyen elsker motoriske lege – tid til mavetid og trillelege!</p>;
     } else {
-      return <p>🎉 Din baby vokser hurtigt – måske er det tid til grød og tumlelege?</p>;
+      return <p>🌟 Din baby udvikler sig hurtigt – husk at stimulere med leg og kontakt.</p>;
     }
   };
 
@@ -30,7 +30,7 @@ export default function WelcomeCard({ name, dob, weeksOld }: Props) {
     >
       <h2>Hej {name} 👶</h2>
       <p>Velkommen til BabyGuiden+</p>
-      {weeksOld !== null && <p>Din alder: {weeksOld} uger</p>}
+      {weeksOld !== null && <p>Din alder: {weeksOld} uge{weeksOld !== 1 ? "r" : ""}</p>}
       {renderContent()}
     </div>
   );
