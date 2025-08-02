@@ -28,7 +28,7 @@ const handleNameSubmit = (name: string, dob: string) => {
     <div style={{ padding: "2rem", fontFamily: "Arial" }}>
       <h1>BabyGuiden+ Webapp 👶</h1>
       {babyName ? (
-        <WelcomeCard name={babyName} />
+<WelcomeCard name={babyName} dob={babyDob} />
       ) : (
         <BabyForm onSubmit={handleNameSubmit} />
       )}
